@@ -1,2 +1,2 @@
-#GeneratingAndValidationApp
-A basic generating and validation app.
+#NumberGeneratingAndValidationApp
+A basic generating and validation app
