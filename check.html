@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">   
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Henrietha C.N">
+    <link rel="stylesheet" type="text/css" href="w3.css">   
+    <script src="regpage.js"></script>
+    <title> Learn Registration Page</title>
+  </head>
+
+  <style>
+  body {
+    background-color: lemonchiffon;
+  }
+
+  .gen {
+    display: flex;
+    padding: 0.5%;
+    margin: 10% 0 0 30%;
+    background-color: rgb(160, 233, 126);
+  }
+  </style>
+ 
+  <body>
+      
+    
+    <button onclick="generate()" class="gen">Generate</button>
+    <div id="random"></div>
+
+    <button onclick="validate()" class="gen">Validate</button>
+    <input type="text" id="val" class="gen">
+    <p id="dumpval"></p>
+
+    <script>
+    function generate(){
+        let rn = Math.floor((Math.random() * 899) + 100);
+        let str = rn.toString();
+
+        let secVal =  parseInt(str.charAt(2));
+        let thirdVal = parseInt(str.charAt(1));
+        let fourtVal = parseInt(str.charAt(0));
+
+        let checkDigit = ((secVal * 2) + (thirdVal * 3) + (fourtVal * 4)) % 10;
+
+        let strCheckDigit = checkDigit.toString();
+        
+        let uniqueId = str + strCheckDigit;
+        document.getElementById('random').innerHTML= uniqueId;
+
+    }
+
+    function validate(){
+      let val = document.getElementById('val').value;
+      let str = val.toString();
+
+        let firVal = parseInt(str.charAt(3));
+        let secVal =  parseInt(str.charAt(2));
+        let thirdVal = parseInt(str.charAt(1));
+        let fourtVal = parseInt(str.charAt(0));
+
+        let checkDigit = ((secVal * 2) + (thirdVal * 3) + (fourtVal * 4)) % 10;
+
+
+        if (firVal === checkDigit){
+          document.getElementById('dumpval').innerHTML = 'checkdigit is correct';
+        } else {
+          document.getElementById('dumpval').innerHTML = 'checkdigit is wrong';
+        }
+    }
+    
+    </script>
+  
+  </body>
+</html>
